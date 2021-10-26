@@ -39,6 +39,19 @@ describe('about me section testing links', () => {
 		cy.get(':nth-child(1) > .info-a > span');
 		cy.log(':nth-child(1) > .info-a > span');
 		// fixme trim() Bucharest
-		cy.get(':nth-child(4) > span').should('have.text', ' Bucharest')
+		cy.get(':nth-child(4) > span').should('have.text', ' Bucharest');
+		// fixme pleaca pe alta pagina
+		// cy.get('#git > .info-a > span').invoke('removeAttr', 'target').click({force:true});
+		cy.url().should('include','dornescu');
+		cy.url().should('include','https://dornescu.ro/');
+		// cy.go('back');
+		cy.reload(true);
+		cy.get('#git > a').invoke('removeAttr', 'target').click({force:true});
+		cy.go('forward');
+		cy.url().should('include','dornescu');
+		cy.go('back');
+		// cy.url().should('include','dornescu');
+
+
 	});
 });

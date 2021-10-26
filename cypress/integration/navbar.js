@@ -65,6 +65,7 @@ describe('testing navbar for elements', () => {
 			if(el.text().includes('Github')){
 				cy.log(el.text())
 				cy.wrap(el).click();
+				// cy.go('back');
 			}
 		});
 		// linkedIn
