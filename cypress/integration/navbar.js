@@ -23,10 +23,22 @@ describe('testing navbar for elements', () => {
 	});
 
 	it('starts with black background then changes to weird yellow', () => {
-		// cy.get('.ul-links > :nth-child(1) > a').should('have.css', 'background-color', '#222')
-		cy.get('.ul-links > :nth-child(1) > a').should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
+		cy.get('.ul-links > :nth-child(2) > a').should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
 		// fixme not showing the right color
-		// cy.get('.ul-links > :nth-child(1) > a').should('have.css', 'background-color', '#ffd73a')
+		cy.get('.ul-links > :nth-child(2) > a').trigger('mouseover').wait(1000);
+		cy.get('.ul-links > :nth-child(2) > a').trigger('mouseout').wait(1000);
+		// cy.get('.ul-links > :nth-child(2) > a').should('have.css', 'background-color', '#ffd73a');
+		// =================
+		cy.get('.ul-links > :nth-child(2) > a[href*="#learning"]').contains("Skills");
+		cy.get('.ul-links > .links').each(($el, index)=>{
+			cy.log(`Index ${index} ${$el.text()}`)
+		});
+		cy.get('.ul-links > .links').each((el, index)=>{
+			if(el.text().includes('Home')){
+				cy.wrap(el).click()
+			}
+		});
+
 	});
 	it('testing sidebar in mobile view', function () {
 		cy.viewport('iphone-xr');
@@ -45,16 +57,15 @@ describe('testing navbar for elements', () => {
 		cy.get(':nth-child(2) > .sidebar-link').click();
 		cy.get('.toggle-nav > .fas').click();
 		cy.get(':nth-child(3) > .sidebar-link').click();
-
 		// github
 		cy.get('.toggle-nav > .fas').click();
-
 		cy.get(':nth-child(4) > .sidebar-link').click();
-		// fixme not getting the link property
-		// cy.get(':nth-child(4) > .sidebar-link').should('include', 'href', 'https://github.com/dornescum.html');
-		cy.debug()
-		// cy.url().should('eq', 'https://github.com/dornescum.html');
-		// cy.get(':nth-child(4) > .sidebar-link').location('href').should('include', 'https://github.com/dornescum.html')
+		cy.get(':nth-child(4) > .sidebar-link').each((el)=>{
+			if(el.text().includes('Github')){
+				cy.log(el.text())
+				cy.wrap(el).click();
+			}
+		});
 		// linkedIn
 		cy.get(':nth-child(5) > .sidebar-link').click();
 	});
@@ -74,7 +85,7 @@ describe('testing navbar for elements', () => {
 	it('should close sidebar', function () {
 		cy.viewport('iphone-x');
 		cy.debug();
-		cy.get('.toggle-nav > .fas' ).click();
+		cy.get('.toggle-nav > .fas').click();
 		cy.debug();
 		cy.get('.sidebar-close').click();
 	});

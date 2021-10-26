@@ -8,7 +8,8 @@
   },
   "author": "Mihai Dornescu",
   "license": "ISC",
-  "dependencies": {
-    "cypress": "^8.6.0"
+  "dependencies": {},
+  "devDependencies": {
+    "cypress": "^8.7.0"
   }
 }
