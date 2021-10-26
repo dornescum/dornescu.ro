@@ -60,6 +60,7 @@ describe('testing navbar for elements', () => {
 		// github
 		cy.get('.toggle-nav > .fas').click();
 		cy.get(':nth-child(4) > .sidebar-link').click();
+		// .invoke('removeAttr', 'target'); //92
 		cy.get(':nth-child(4) > .sidebar-link').each((el)=>{
 			if(el.text().includes('Github')){
 				cy.log(el.text())
@@ -67,6 +68,8 @@ describe('testing navbar for elements', () => {
 			}
 		});
 		// linkedIn
+
+
 		cy.get(':nth-child(5) > .sidebar-link').click();
 	});
 	it('launch phone in mobile', function () {
