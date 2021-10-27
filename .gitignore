@@ -28,4 +28,6 @@ yarn-error.log*
 cypress/integration/fixtures
 cypress/integration/plugins
 cypress/integration/suport
+./cypress/videos
+
 

@@ -21,7 +21,6 @@ describe('testing navbar for elements', () => {
 		cy.get('.ul-links > :nth-child(2) > a').should('have.text', 'Skills').click();
 		cy.get('.ul-links > :nth-child(3) > a').should('have.text', 'Portfolio').click();
 	});
-
 	it('starts with black background then changes to weird yellow', () => {
 		cy.get('.ul-links > :nth-child(2) > a').should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
 		// fixme not showing the right color
@@ -49,7 +48,7 @@ describe('testing navbar for elements', () => {
 		// cy.visit("https://dornescu.ro/").contains('a', '#').should('have.attr', 'href');
 		// cy.contains("a", "#");
 	});
-	it.only('sidebar links in mobile ', function () {
+	it('sidebar links in mobile ', function () {
 		cy.viewport('samsung-s10');
 		cy.get('.toggle-nav > .fas').click();
 		cy.get(':nth-child(1) > .sidebar-link').click();

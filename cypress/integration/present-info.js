@@ -28,7 +28,7 @@ describe('about me section testing links', () => {
 		// todo dc nu se mai duce pe link?
 		cy.get('.info > :nth-child(6)').invoke('removeAttr', 'target').click({force: true});
 	});
-	it.only('should work in mobile', function () {
+	it('should work in mobile', function () {
 		cy.viewport('iphone-xr');
 		cy.get('.right-1');
 		//.find('img').should('have.attr', 'src', 'assets/img/Mihai1.webp')
