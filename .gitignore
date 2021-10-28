@@ -29,5 +29,6 @@ cypress/integration/fixtures
 cypress/integration/plugins
 cypress/integration/suport
 ./cypress/videos
+cypress/videos
 
 
