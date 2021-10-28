@@ -41,5 +41,4 @@ describe('', ()=>{
 		cy.viewport('iphone-xr');
 		cy.get('[data-testid=learning-courses] > .row');
 	});
-
 })
