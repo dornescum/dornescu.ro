@@ -6,12 +6,12 @@ describe('about me section testing links', () => {
 		cy.visit('https://dornescu.ro/');
 		cy.get('#present');
 	});
-	it('should have links', function () {
+	it.only('should have links', function () {
 		cy.get('.right-1');
 		cy.get('.info > :nth-child(1)');
 		cy.get(':nth-child(1) > .info-a > span');
+		cy.get('.info > :nth-child(1)').should('have.css', 'color', 'rgb(34, 34, 34)');
 		cy.get(':nth-child(1) > .info-a > span').should('have.text', '+40 762369717');
-		// cy.log(':nth-child(1) > .info-a > span').contains('+40 762369717');
 		// todo imi da [object object]
 		cy.get('.right-1 > .info > .info-link > .info-a').each((el, index) => {
 			cy.log(`Index is ${index} for element ${el}`);
@@ -24,14 +24,12 @@ describe('about me section testing links', () => {
 		cy.get('#git > .info-a').contains('Github');
 		cy.get('#linkedIn > span').contains('LinkedIn');
 		cy.get('#linkedIn > span').contains('LinkedIn');
-		cy.get('#linkedIn').click({force: true});
-		// todo dc nu se mai duce pe link?
-		cy.get('.info > :nth-child(6)').invoke('removeAttr', 'target').click({force: true});
+		cy.get('#linkedIn ').invoke('removeAttr', 'target').click({force:true});
+		cy.go('back');
 	});
 	it('should work in mobile', function () {
 		cy.viewport('iphone-xr');
 		cy.get('.right-1');
-		//.find('img').should('have.attr', 'src', 'assets/img/Mihai1.webp')
 		//todo error!!
 		// cy.get('.left-1 > img').find('img').should('have.attr', 'src').should('include','assets/img/Mihai1.webp')
 		cy.get('.left-1 > img').should('be.visible');
@@ -46,13 +44,13 @@ describe('about me section testing links', () => {
 		cy.go('back');
 		// cy.url().should('include','dornescu');
 	});
-	it.only('should acces gitHub and return', function () {
+	it('should acces gitHub and return', function () {
 		cy.get('#git > .info-a ').invoke('removeAttr', 'target').click({force:true});
 		cy.go('back');
 		cy.url().should('include','https://dornescu.ro/');
 		cy.reload(true);
 	});
-	it.only('should acces linkedIn and return', function () {
+	it('should acces linkedIn and return', function () {
 		cy.get('#linkedIn ').invoke('removeAttr', 'target').click({force:true});
 		cy.go('back');
 		cy.url().should('include','https://dornescu.ro/');
