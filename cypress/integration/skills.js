@@ -4,7 +4,7 @@
 describe('', ()=>{
 	beforeEach(() => {
 		cy.visit('https://dornescu.ro/');
-		cy.get('#future');
+		cy.get('#learning');
 	});
 	it('should contain #learning', function () {
 		// cy.get('#learning').should('have.text', 'Skills');
