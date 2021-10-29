@@ -35,11 +35,42 @@ describe('', ()=>{
 		cy.get('#vue').should('have.css', 'animation', '3s ease-in 0s 1 normal none running anim-right');
 	});
 	it('should have class disable', function () {
-		cy.get('#jest').should('have.class', 'disabled')
+		cy.get('#jest').should('have.class', 'disabled');
 	});
 	it('should be display flex-column in mobile', function () {
 		cy.viewport('iphone-xr');
 		cy.get('[data-testid=learning-courses] > .row');
 	});
+	it('should have css category', function () {
+		cy.get('#past-left > .card >ul > *').filter("#css").should('have.text', 'css');
+	});
+	it('should  ', function () {
+		cy.get('#past-left > .card ').find('ul').find('li').should('have.length', '6');
+	});
+	it('should find React js ', function () {
+		cy.get('#cardPastRight > .card-ul').first().should('contain', 'react js');
+	});
+	it('should find the last element = cypress', function () {
+		cy.get('#cardPastRight > .card-ul').last().should('contain', 'cypress');
+	});
+	it('should not include disabled elements', function () {
+		cy.get('#cardPastRight > .card-ul > li').not('.disabled').should('not.have.class', 'disabled');
+	});
+	it('PARENTS() should fint parents', function () {
+		cy.get('#react').parents().should('match', '#past-right')
+	});
+	it('PREV() should find previous link', function () {
+		cy.get('#cypress').prev().contains('jest')
+	});
+	it('PREVALL() should find previous links', function () {
+		cy.get('#cypress').prevAll().should('have.length', '5')
+	});
+	it('PREVUNTILL() should find 4 links above', function () {
+		cy.get('#cypress').prevUntil('#react').should('have.length', 3)
+	});
+	it.only('SIBLINGS() should find 5 links above', function () {
+		cy.get('#cypress').siblings().should('have.length', 5)
+	});
+
 
 })
