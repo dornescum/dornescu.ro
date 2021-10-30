@@ -68,7 +68,7 @@ describe('', ()=>{
 	it('PREVUNTILL() should find 4 links above', function () {
 		cy.get('#cypress').prevUntil('#react').should('have.length', 3)
 	});
-	it.only('SIBLINGS() should find 5 links above', function () {
+	it('SIBLINGS() should find 5 links above', function () {
 		cy.get('#cypress').siblings().should('have.length', 5)
 	});
 
