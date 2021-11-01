@@ -55,6 +55,7 @@ describe('about me section testing links', () => {
 		cy.go('back');
 		cy.url().should('include','https://dornescu.ro/');
 		cy.reload(true);
+		cy.go('back');
 	});
 
 });

@@ -3,7 +3,7 @@
 // / <reference types="cypress" />
 describe('testing navbar for elements', () => {
 	beforeEach(() => {
-		cy.visit('https://dornescu.ro/');
+		cy.visit('/');
 	});
 	it('testing navbar links inside the DOM', function () {
 		// cy.get("ul").contains('Home').click()
@@ -29,12 +29,13 @@ describe('testing navbar for elements', () => {
 		// cy.get('.ul-links > :nth-child(2) > a').should('have.css', 'background-color', '#ffd73a');
 		// =================
 		cy.get('.ul-links > :nth-child(2) > a[href*="#learning"]').contains("Skills");
-		cy.get('.ul-links > .links').each(($el, index)=>{
-			cy.log(`Index ${index} ${$el.text()}`)
+		cy.get('.ul-links > .links').each(($el, index) => {
+			cy.log(`Index ${index} ${$el.text()}`);
 		});
-		cy.get('.ul-links > .links').each((el, index)=>{
-			if(el.text().includes('Home')){
-				cy.wrap(el).click()
+		cy.get('.ul-links > .links').each((el, index) => {
+			if (el.text().includes('Home')) {
+				cy.wrap(el).click();
+
 			}
 		});
 
@@ -52,25 +53,32 @@ describe('testing navbar for elements', () => {
 		cy.viewport('samsung-s10');
 		cy.get('.toggle-nav > .fas').click();
 		cy.get(':nth-child(1) > .sidebar-link').click();
+
 		cy.get('.toggle-nav > .fas').click();
 		cy.get(':nth-child(2) > .sidebar-link').click();
+
 		cy.get('.toggle-nav > .fas').click();
 		cy.get(':nth-child(3) > .sidebar-link').click();
+
 		// github
 		cy.get('.toggle-nav > .fas').click();
-		cy.get(':nth-child(4) > .sidebar-link').click();
+		cy.get(':nth-child(4) > .sidebar-link').invoke('removeAttr', 'target').click();
+		cy.go('back');
 		// .invoke('removeAttr', 'target'); //92
-		cy.get(':nth-child(4) > .sidebar-link').each((el)=>{
-			if(el.text().includes('Github')){
-				cy.log(el.text())
-				cy.wrap(el).click();
-				// cy.go('back');
-			}
-		});
+
+
+		// cy.get(':nth-child(4) > .sidebar-link').each((el) => {
+		// 	if (el.text().includes('Github')) {
+		// 		cy.log(el.text());
+		// 		cy.wrap(el).invoke('removeAttr', 'target').click();
+		// 		// cy.go('back');
+		// 	}
+		// });
 		// linkedIn
 
-
-		cy.get(':nth-child(5) > .sidebar-link').click();
+		cy.get('.toggle-nav > .fas').click();
+		cy.get(':nth-child(5) > .sidebar-link').invoke('removeAttr', 'target').click();
+		cy.go('back');
 	});
 	it('launch phone in mobile', function () {
 		cy.viewport('iphone-x');

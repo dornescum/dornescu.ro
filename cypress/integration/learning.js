@@ -3,7 +3,7 @@
 
 describe('testing learning section', ()=>{
 	beforeEach(() => {
-		cy.visit('https://dornescu.ro/');
+		cy.visit('/');
 		cy.get('.timeline');
 	});
 	it('should contain list of courses', function () {
